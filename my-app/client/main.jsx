@@ -4,5 +4,5 @@ import { hydrate } from 'react-dom';
 import App from '/imports/ui/App';
 
 Meteor.startup(() => {
-  hydrate(<App />, document.getElementById("app"));
+  hydrate(<App />, document.getElementById('app'));
 });

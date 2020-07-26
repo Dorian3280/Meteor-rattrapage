@@ -8,7 +8,7 @@ export const SessionProvider = ({ children }) => {
     const [ users, setUsers ] = useState([]);
     const [ currentUser, setCurrentUser ] = useState({});
 
-    const signup = useCallback((user) => {
+    const signUp = useCallback((user) => {
         user.id = users.length + 1;
         const newUsers = [...users];
         newUsers.push(user);
@@ -16,7 +16,7 @@ export const SessionProvider = ({ children }) => {
         setCurrentUser(user);
     }, [ users ]);
 
-    const login = useCallback((user) => {
+    const signIn = useCallback((user) => {
         const found = users.find(({ username }) => username === user.username);
 
         if (!found) {
@@ -34,7 +34,8 @@ export const SessionProvider = ({ children }) => {
         <SessionConstext.Provider
             value={{
                 currentUser,
-                signup,
+                signIn,
+                signUp
             }}
         >
             {children}

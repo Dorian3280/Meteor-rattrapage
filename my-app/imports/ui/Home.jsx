@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { SessionProvider } from './SessionContext';
 
 const Home = () => {
+
     return (
         <div className="container">
             <h1>Application Meteor</h1>
