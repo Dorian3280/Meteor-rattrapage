@@ -1,13 +1,15 @@
 import { Accounts } from 'meteor/accounts-base';
-import React, { useCallback, useState, useContext } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import React, { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Hello = ( {history} ) => {
+
+  // Déclaration du State
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ verification, setVerification ] = useState('');
 
+  // Hooks
   const handleChange = useCallback((e) => {
     switch (e.target.id) {
       case ('username'):
@@ -48,6 +50,7 @@ const Hello = ( {history} ) => {
     }
   }, [username, password, verification]);
 
+  // Rendu
   return (
     <div className="container">
       <h2>Inscription</h2>
@@ -61,7 +64,7 @@ const Hello = ( {history} ) => {
           <div className="confirmPassword">
               <input onChange={handleChange} value={verification} id="verification" autoComplete="new-password" type="password" placeholder="Vérification"/>
           </div>
-          <button className="box button" type="submit">S'inscrire</button>
+          <button className="box button" type="submit">S&apos;inscrire</button>
       </form>
       <Link to="/connexion">J&apos;ai déjà un compte</Link>
     </div>

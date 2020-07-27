@@ -1,14 +1,15 @@
 import { Meteor } from 'meteor/meteor';
-import React, { useCallback, useState, useContext } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import React, { useCallback, useState } from 'react';
+import { Link } from "react-router-dom";
 
 
 const Hello = ( {history} ) => {
-  const [ formData, setFormData] = useState({ username: '', password: ''});
 
+  // Déclaration du State et des variables
+  const [ formData, setFormData] = useState({ username: '', password: ''});
   const { username, password } = formData;
 
+  // Hooks
   const handleChange = useCallback((e) => {
     setFormData({
       ...formData,
@@ -18,14 +19,6 @@ const Hello = ( {history} ) => {
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-
-    if (!username || username === '') {
-      console.log('Nom d\'utilisateur vide');
-    }
-  
-    if (!password || password === '') {
-      console.log('Mot de passe vide');
-    }
 
     try {
       Meteor.loginWithPassword(username, password, (error) => {
@@ -40,6 +33,7 @@ const Hello = ( {history} ) => {
     }
   }, [username, password]);
 
+  // Rendu
   return (
     <div className="container">
       <h2>Connexion</h2>

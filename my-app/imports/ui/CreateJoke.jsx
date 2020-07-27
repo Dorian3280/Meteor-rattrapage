@@ -1,17 +1,21 @@
-import React, { useCallback, useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Link } from 'react-router-dom';
 import { useTracker } from 'meteor/react-meteor-data';
+import React, { useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = ( {history} ) => {
+
+    // Déclaration du State
     const [jokeContent, setJokeContent] = useState('azer');
 
+    
+    // Si il n'est pas connecté
     let user =  useTracker(() => Meteor.userId(), []);
-
     if (!user) {
         history.push('/');
     }
 
+    // Hooks
     const handleChange = useCallback((e) => {
         setJokeContent(e.target.value);
     });
@@ -29,6 +33,7 @@ const Home = ( {history} ) => {
         });
     }, [jokeContent]);
     
+    // Rendu
     return (
         <div className="container">
             <h2>Créez votre propre blague</h2>
