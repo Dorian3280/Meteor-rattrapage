@@ -1,16 +1,12 @@
 import React, { useCallback, useState, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import SessionContext from './SessionContext';
 import { toast } from 'react-toastify';
 
 const Hello = () => {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ verification, setVerification ] = useState('');
-
-  const { signUp } = useContext(SessionContext);
-
 
   const handleChange = useCallback((e) => {
     switch (e.target.id) {
@@ -50,9 +46,6 @@ const Hello = () => {
         username,
         password
       });
-      return (
-        <Redirect to="/" />
-      );
     }
   }, [username, password, verification]);
 

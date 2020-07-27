@@ -1,6 +1,5 @@
 import React, { useCallback, useState, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SessionContext from './SessionContext';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -9,8 +8,6 @@ const Hello = () => {
   const [ formData, setFormData] = useState({ username: '', password: ''});
 
   const { username, password } = formData;
-  
-  const { signIn } = useContext(SessionContext);
 
   const handleChange = useCallback((e) => {
     setFormData({
@@ -32,7 +29,6 @@ const Hello = () => {
 
     try {
       signIn({ username, password });
-      return <Route to="/accueil"></Route>;
     } catch (error) {
       toast.error(error.message);
     }
