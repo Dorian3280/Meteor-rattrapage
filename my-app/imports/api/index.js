@@ -7,7 +7,7 @@ const JokesList = new SimpleSchema({
     content: {
         type: String,
     },
-    IdUser: {
+    userId: {
         type: String,
     },
     createAt: {
