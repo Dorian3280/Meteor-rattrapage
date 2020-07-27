@@ -1,10 +1,10 @@
+import { Meteor } from 'meteor/meteor';
 import React, { useCallback, useState, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 
-const Hello = () => {
+const Hello = ( {history} ) => {
   const [ formData, setFormData] = useState({ username: '', password: ''});
 
   const { username, password } = formData;
@@ -19,20 +19,26 @@ const Hello = () => {
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
 
-    if (!username) {
-      toast.error('Nom d\'utilisateur vide');
+    if (!username || username === '') {
+      console.log('Nom d\'utilisateur vide');
     }
   
-    if (!password) {
-      toast.error('Mot de passe vide');
+    if (!password || password === '') {
+      console.log('Mot de passe vide');
     }
 
     try {
-      signIn({ username, password });
+      Meteor.loginWithPassword(username, password, (error) => {
+        if (error) {
+          console.log(error.reason);
+        } else {
+          history.push('/accueil');
+        }
+      })
     } catch (error) {
-      toast.error(error.message);
+      console.log(error.message);
     }
-  }, [username, password, signIn]);
+  }, [username, password]);
 
   return (
     <div className="container">

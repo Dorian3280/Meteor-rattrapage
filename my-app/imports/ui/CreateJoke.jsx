@@ -1,7 +1,16 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Link } from 'react-router-dom';
+import { useTracker } from 'meteor/react-meteor-data';
 
-const Home = () => {
+const Home = ( {history} ) => {
+    let user =  useTracker(() => Meteor.userId(), []);
+
+    console.log(user);
+    if (!user) {
+        history.push('/');
+    }
+    
     return (
         <div className="container">
             <h2>Créez votre propre blague</h2>

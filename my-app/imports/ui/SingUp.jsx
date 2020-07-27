@@ -1,9 +1,9 @@
+import { Accounts } from 'meteor/accounts-base';
 import React, { useCallback, useState, useContext } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
-const Hello = () => {
+const Hello = ( {history} ) => {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
   const [ verification, setVerification ] = useState('');
@@ -29,22 +29,21 @@ const Hello = () => {
 
     let fire = true;
     [username, password, verification].map((e) => {
-      if (typeof e === 'string') {
-        e.trim();
-      }
+      e.trim();
       if (e === '') fire = false;
     });
 
     if (!fire || (password !== verification)) {
       console.log('error');
-      toast.error('Erreur');
       return;
     } else {
-      toast.success('Inscription réussi !');
-      console.log('réussi');
-      signUp({
-        username,
-        password
+      Accounts.createUser({username, password}, (error) => {
+        if (error) {
+          console.log('erreur :' + error.reason);
+        } else {
+          console.log('réussi');
+          history.push('/accueil');
+        }
       });
     }
   }, [username, password, verification]);
