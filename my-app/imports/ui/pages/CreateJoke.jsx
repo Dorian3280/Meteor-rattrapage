@@ -1,14 +1,19 @@
 import { Meteor } from 'meteor/meteor';
 import { useTracker } from 'meteor/react-meteor-data';
 import React, { useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
+
+import Container from '../components/Container';
+import Flex from '../components/Flex';
+import Title from '../components/Title';
+import Button from '../components/Button';
+import Form from '../components/Form';
+import Box from '../components/Box';
 
 const Home = ( {history} ) => {
 
     // Déclaration du State
-    const [jokeContent, setJokeContent] = useState('azer');
+    const [jokeContent, setJokeContent] = useState('');
 
-    
     // Si il n'est pas connecté
     let user =  useTracker(() => Meteor.userId(), []);
     if (!user) {
@@ -35,16 +40,18 @@ const Home = ( {history} ) => {
     
     // Rendu
     return (
-        <div className="container">
-            <h2>Créez votre propre blague</h2>
-            <form className="container" onSubmit={handleSubmit}>
-                <textarea className="box jokes" value={jokeContent} onChange={handleChange}>azer</textarea>
-                <button className="box button" type='submit'>Créer la blague</button>
-            </form>
-            <div className="box sign">
-                <Link to="/accueil">Retour</Link>
-            </div>
-        </div>
+      <Container>
+        <Flex>
+          <Title type="2">Créez votre propre blague</Title>
+          <Form onSubmit={handleSubmit}>
+            <Flex>
+              <Box text="true" value={jokeContent} onChange={handleChange}></Box>
+              <Button type='submit'>Créer la blague</Button>
+            </Flex>
+          </Form>
+          <Button to="/accueil">Retour</Button>
+        </Flex>
+      </Container>
     )
 }
 

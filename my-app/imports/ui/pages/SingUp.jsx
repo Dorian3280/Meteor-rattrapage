@@ -1,6 +1,13 @@
 import { Accounts } from 'meteor/accounts-base';
 import React, { useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
+
+import Container from '../components/Container';
+import Flex from '../components/Flex';
+import Title from '../components/Title';
+import Button from '../components/Button';
+import Form from '../components/Form';
+import Input from '../components/Input';
+
 
 const Hello = ( {history} ) => {
 
@@ -52,22 +59,20 @@ const Hello = ( {history} ) => {
 
   // Rendu
   return (
-    <div className="container">
-      <h2>Inscription</h2>
-      <form className="container" onSubmit={handleSubmit}>
-          <div className="pseudo">
-              <input onChange={handleChange} value={username} id="username" type="text" placeholder="Pseudo"/>
-          </div>
-          <div className="password">
-              <input onChange={handleChange} value={password} id="password" autoComplete="new-password" type="password" placeholder="Mot de passe..."/>
-          </div>
-          <div className="confirmPassword">
-              <input onChange={handleChange} value={verification} id="verification" autoComplete="new-password" type="password" placeholder="Vérification"/>
-          </div>
-          <button className="box button" type="submit">S&apos;inscrire</button>
-      </form>
-      <Link to="/connexion">J&apos;ai déjà un compte</Link>
-    </div>
+    <Container>
+      <Flex>
+        <Title type="2">Inscription</Title>
+        <Form onSubmit={handleSubmit}>
+          <Flex>
+            <Input onChange={handleChange} value={username} id="username" type="text" placeholder="Username"/>
+            <Input onChange={handleChange} value={password} id="password" autoComplete="new-password" type="password" placeholder="Mot de passe..."/>
+            <Input onChange={handleChange} value={verification} id="verification" autoComplete="new-password" type="password" placeholder="Vérification"/>
+            <Button type="submit">S&apos;inscrire</Button>
+          </Flex>
+        </Form>
+        <Button to="/connexion">J'ai déjà un compte</Button>
+      </Flex>
+    </Container>
   );
 }
 

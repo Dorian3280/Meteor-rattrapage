@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Home from './Home';
-import SingUp from './SingUp';
-import SingIn from './SingIn';
-import UserHome from './UserHome';
-import CreateJoke from './CreateJoke';
-import ErrorPage from './ErrorPage';
+import Home from './pages/Home';
+import SingUp from './pages/SingUp';
+import SingIn from './pages/SingIn';
+import UserHome from './pages/UserHome';
+import CreateJoke from './pages/CreateJoke';
+import ErrorPage from './pages/ErrorPage';
 
 const App = () => (
   <Router>
