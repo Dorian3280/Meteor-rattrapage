@@ -48,16 +48,20 @@ const Home = ( {history} ) => {
     // Rendu
     return (
         <Container>
-            <Flex>
+            <Flex column none center>
                 <Title type="2">Accueil</Title>
                 <Box>
-                    <Blockquote>
-                    <Paragraphe>{joke.content}</Paragraphe>
-                    <Cite>{joke.author}</Cite>
-                    </Blockquote>
+                    <Flex column center center>
+                        <Blockquote>
+                        <Paragraphe>{joke.content}</Paragraphe>
+                        <Cite>{joke.author}</Cite>
+                        </Blockquote>
+                    </Flex>
                 </Box>
-                <Button primacy="true" onClick={getOneJoke}>Une autre</Button>
-                <Button to="/creez-votre-blague">Créez votre propre blague</Button>
+                <Flex row center none>
+                    <Button onClick={getOneJoke}>Une autre</Button>
+                    <Button to="/creez-votre-blague">Créez en une</Button>
+                </Flex>
                 <Button onClick={logout}>Déconnexion</Button>
             </Flex>
         </Container>

@@ -33,17 +33,19 @@ const Home = () => {
 
     return (
         <Container>
-            <Flex>
+            <Flex column none center>
                 <Title type="1">Application Meteor</Title>
                 <Box>
                     <Blockquote>
-                    <Paragraphe>{joke.content}</Paragraphe>
-                    <Cite>{joke.author}</Cite>
+                        <Paragraphe>{joke.content}</Paragraphe>
+                        <Cite>{joke.author}</Cite>
                     </Blockquote>
                 </Box>
-                <Button primacy="true" onClick={getOneJoke}>Une autre !</Button>
-                <Button to="/connexion">Connexion</Button>
-                <Button to="/inscription">Inscription</Button>
+                <Button onClick={getOneJoke}>Une autre !</Button>
+                <Flex row center none>
+                    <Button to="/connexion">Connexion</Button>
+                    <Button to="/inscription">Inscription</Button>
+                </Flex>
             </Flex>
         </Container>
     )

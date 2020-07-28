@@ -10,8 +10,8 @@ const customItem = (props) => {
 
 const item = styled(customItem)`
     width: 500px;
-    min-height: 100px;
-    padding: 10px 40px;
+    max-width: 100%;
+    padding: 20px 40px;
     background: #1DD3B0;
     border-radius: 40px;
     border: none;

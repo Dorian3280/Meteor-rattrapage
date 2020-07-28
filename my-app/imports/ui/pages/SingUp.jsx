@@ -60,10 +60,10 @@ const Hello = ( {history} ) => {
   // Rendu
   return (
     <Container>
-      <Flex>
+      <Flex column none center>
         <Title type="2">Inscription</Title>
         <Form onSubmit={handleSubmit}>
-          <Flex>
+          <Flex column none center>
             <Input onChange={handleChange} value={username} id="username" type="text" placeholder="Username"/>
             <Input onChange={handleChange} value={password} id="password" autoComplete="new-password" type="password" placeholder="Mot de passe..."/>
             <Input onChange={handleChange} value={verification} id="verification" autoComplete="new-password" type="password" placeholder="Vérification"/>

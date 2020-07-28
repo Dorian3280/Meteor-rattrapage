@@ -41,10 +41,10 @@ const Hello = ( {history} ) => {
   // Rendu
   return (
     <Container>
-        <Flex>
+        <Flex column none center>
           <Title type="2">Connexion</Title>
           <Form onSubmit={handleSubmit}>
-            <Flex>
+            <Flex column none center>
               <Input onChange={handleChange} value={formData.email} type="text" id="username" placeholder="Username"/>
               <Input onChange={handleChange} value={formData.password} autoComplete="current-password" id="password" type="password" placeholder="Mot de passe..."/>
               <Button type="submit">Se connecter</Button>

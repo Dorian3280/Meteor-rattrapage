@@ -41,10 +41,10 @@ const Home = ( {history} ) => {
     // Rendu
     return (
       <Container>
-        <Flex>
+        <Flex column none center>
           <Title type="2">Créez votre propre blague</Title>
           <Form onSubmit={handleSubmit}>
-            <Flex>
+            <Flex column none center>
               <Box text="true" value={jokeContent} onChange={handleChange}></Box>
               <Button type='submit'>Créer la blague</Button>
             </Flex>
